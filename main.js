@@ -1,6 +1,7 @@
 let timer
 let deleteFirstPhotoDelay
 
+//get API data for dogs
 async function start() {
   try {
     const response = await fetch("https://dog.ceo/api/breeds/list/all")
@@ -13,6 +14,7 @@ async function start() {
 
 start()
 
+//function that displays drop down of breeds
 function createBreedList(breedList) {
   document.getElementById("breed").innerHTML = `
   <select onchange="loadByBreed(this.value)">
@@ -24,6 +26,7 @@ function createBreedList(breedList) {
   `
 }
 
+//function that gets the breed value and returns it
 async function loadByBreed(breed) {
   if (breed != "Choose a dog breed") {
     const response = await fetch(`https://dog.ceo/api/breed/${breed}/images`)
@@ -31,7 +34,7 @@ async function loadByBreed(breed) {
     createSlideshow(data.message)
   }
 }
-
+ //funciton to create slide show
 function createSlideshow(images) {
   let currentPosition = 0
   clearInterval(timer)
@@ -52,6 +55,7 @@ function createSlideshow(images) {
   `
   }
 
+  //funciton to move to next slide
   function nextSlide() {
     document.getElementById("slideshow").insertAdjacentHTML("beforeend", `<div class="slide" style="background-image: url('${images[currentPosition]}')"></div>`)
     deleteFirstPhotoDelay = setTimeout(function () {
