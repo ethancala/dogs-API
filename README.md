@@ -1,6 +1,6 @@
 Ethan Cala Software Engineering Class
 
-Dog API assingment
+Dog API assignment
 
 ethanacala@lewisu.edu
 
